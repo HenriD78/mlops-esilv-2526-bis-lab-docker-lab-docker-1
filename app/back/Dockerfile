@@ -34,5 +34,8 @@ EXPOSE 5000
 #10.0 Set the FLASK env variable 
 ENV FLASK_APP=app.py
 
-# 10.1  The command to run your app (using Gunicorn or Uvicorn is standard)
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app.main:app"]
+# 10.1 Set a default value for CURRENT_ENVIRONMENT (can be overridden at runtime with -e)
+ENV CURRENT_ENVIRONMENT=production
+
+# 10.2 The command to run your app
+CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
