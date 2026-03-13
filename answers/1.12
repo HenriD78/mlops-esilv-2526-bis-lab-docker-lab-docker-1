@@ -1,0 +1,2 @@
+docker run -d -p 8083:80 -e TR_WS_BACK_URL=http://localhost:8080 front
+# docker run --rm -p 8083:80 front

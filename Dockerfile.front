@@ -1,0 +1,14 @@
+FROM debian:trixie
+
+RUN apt-get update \
+    && apt-get install -y lighttpd adduser 
+
+RUN adduser www-data -G www-data -H -s /bin/false -D
+
+COPY app/front/lighttpd.conf /etc/lighttpd/lighttpd.conf
+
+COPY app/front/index.html app/front/style.css /var/www/
+
+EXPOSE 80
+
+CMD ["lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
