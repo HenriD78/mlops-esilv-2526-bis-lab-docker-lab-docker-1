@@ -29,7 +29,10 @@ RUN adduser --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
 
 # 9. Expose the port your app runs on
-EXPOSE 8000
+EXPOSE 5000
 
-# 10. The command to run your app (using Gunicorn or Uvicorn is standard)
+#10.0 Set the FLASK env variable 
+ENV FLASK_APP=app.py
+
+# 10.1  The command to run your app (using Gunicorn or Uvicorn is standard)
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app.main:app"]
