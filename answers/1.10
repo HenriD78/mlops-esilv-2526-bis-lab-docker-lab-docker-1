@@ -1,0 +1,2 @@
+docker exec -it back-container bash
+# OS is Debian GNU/Linux
